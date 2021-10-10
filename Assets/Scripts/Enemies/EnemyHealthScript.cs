@@ -5,8 +5,12 @@ using UnityEngine;
 public class EnemyHealthScript : MonoBehaviour
 {
     public float enemyHealth = 100;
+
     void Update()
     {
-        
+        if(enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
