@@ -33,12 +33,30 @@ public class HoverOnTileScript : MonoBehaviour
 
     void OnMouseEnter()//Als de muis op de tile staat dan laat die een andere kleur zien.
     {
-        rend.material.color = hoverColor;
+        hoverTheColor = true;//In deze functie staat deze bool op true;
+        if (hoverTheColor == true && turret)//Als de hovercolor true is en de toren is er ga naar de startkleur.
+        {
+            rend.material.color = startColor;
+        }
+        else//anders als de toren er niet staat op mouseEnter de hovercolor laten zien.
+        {
+            rend.material.color = hoverColor;
+        }
     }
+
 
     void OnMouseExit()//Als de muis van de tile afgaat dan laat die de normale kleur zien(begin kleur).
     {
-        rend.material.color = startColor;
+        hoverTheColor = false;//In deze functie staat deze bool op false;
+        if(hoverTheColor == false)//Als de hovercolor false is dan moet het naar de startkleur gaan.
+        {
+            rend.material.color = startColor;
+        }
+        else//Als de muis niet op de tile staat dan gaat de bool terug naar true en laat dus de hovercolor zien.
+        {
+            rend.material.color = hoverColor;
+        }
     }
+
 
 }
