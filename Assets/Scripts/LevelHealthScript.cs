@@ -9,7 +9,7 @@ public class LevelHealthScript : MonoBehaviour
     public float health = 10;
     public bool gameEnd = false;
 
-    //public Text healthText;
+    public Text healthText;
 
     private void Update()
     {
@@ -18,6 +18,8 @@ public class LevelHealthScript : MonoBehaviour
             gameEnd = true;
             SceneManager.LoadScene(1);
         }
+
+        healthText.text = "Lives: " + health;
     }
 
     

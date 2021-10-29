@@ -9,12 +9,11 @@ public class EnemyDoDamageScript : MonoBehaviour
 
    [SerializeField] private LevelHealthScript levelHealth;
 
-    public Text livesText;
 
     private void Start()
     {
         levelHealth = FindObjectOfType<LevelHealthScript>();
-        livesText = livesText.gameObject.GetComponent<Text>();
+        //livesText = livesText.gameObject.GetComponent<Text>();
     }
 
 
@@ -29,6 +28,6 @@ public class EnemyDoDamageScript : MonoBehaviour
 
     private void Update()
     {
-        livesText.text = "Lives: " + levelHealth.health; //Zou de current health moeten laten zien.
+        //livesText.text = "Lives: " + levelHealth.health; //Zou de current health moeten laten zien.
     }
 }

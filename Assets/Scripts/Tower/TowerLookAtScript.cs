@@ -10,18 +10,28 @@ public class TowerLookAtScript : MonoBehaviour
     public float reloadTime;
     private float timer;
 
+    public GameObject enemyLight;
 
     void Start()
     {
         timer = reloadTime; //Timer begint op 0.
+        enemyLight = transform.GetChild(0).gameObject;
+        enemyLight.GetComponent<Light>().intensity = 10; 
     }
 
     public void Update()
     {
         if (target)
         {
+            if(target.GetComponent<EnemyMovement>().targeted == false)
+            {
+                enemyLight.SetActive(true);
+                target.GetComponent<EnemyMovement>().targeted = true;
+            }
+
             Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);//Geeft de positie aan van enemy.
             transform.LookAt(targetPosition);//Kijkt naar de positie van enemy.
+            enemyLight.transform.LookAt(targetPosition);
             timer += Time.deltaTime;//Als die naar de enemy kijkt start de timer.
             if (timer > reloadTime)//Wanneer het timer groter is dan de delay.
             {
@@ -32,6 +42,7 @@ public class TowerLookAtScript : MonoBehaviour
 
             if(Vector3.Distance(transform.position, target.transform.position) > radius)
             {
+                target.GetComponent<EnemyMovement>().targeted = false; //Wanneer de enemy buiten range is gaat de light uit.
                 target = null; //Wanneer de enemy buiten range is dan word de target naar niks gezet "null" want hij kan het niet vinden, dus heeft geen target.
             }
         }
@@ -39,6 +50,7 @@ public class TowerLookAtScript : MonoBehaviour
         else
         {
             FindTargetInRange(); //Wanneer die geen target(enemy) heeft dan moet die daar naar opzoek.
+            enemyLight.SetActive(false);
         }
     }
 

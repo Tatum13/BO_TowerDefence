@@ -9,13 +9,15 @@ public class EnemyMovement : MonoBehaviour
     private Transform target;
     private int wavepointIndex = 0;
 
-    private WaveSpawner EC;
+    public bool targeted = false;
+
+    private WaveSpawner newEnemyCounter;
 
     //private LevelHealthScript levelHealth;
 
     void Start()
     {
-        EC = GameObject.FindWithTag("Spawn").GetComponent<WaveSpawner>();
+        newEnemyCounter = GameObject.FindWithTag("Spawn").GetComponent<WaveSpawner>();
         target = Waypoints.points[0];
     }
 
@@ -34,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if(wavepointIndex >= Waypoints.points.Length - 1)
         {
-            EC.enemyCounter--;
+            newEnemyCounter.enemyCounter--;
             Destroy(gameObject);
             return;
         }
