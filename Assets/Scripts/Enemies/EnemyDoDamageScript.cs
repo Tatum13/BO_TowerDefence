@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyDoDamageScript : MonoBehaviour
 {
-    public float damage = 10;
+    public float damage = 1f;
 
-    public MainHealthScript mainBuildingHealth;
+   [SerializeField] private LevelHealthScript levelHealth;
+
+    public Text livesText;
+
+    private void Start()
+    {
+        levelHealth = FindObjectOfType<LevelHealthScript>();
+        livesText = livesText.gameObject.GetComponent<Text>();
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "MainBuilding")
+        if (collision.gameObject.tag == "EndTile")
         {
-            mainBuildingHealth.mainHealth -= damage;
+            Debug.Log("aaaaaaaaaaaaaaaaa");
+            levelHealth.health -= damage;//Haalt de health er wel vanaf maar laat dat niet zien in de UI.
         }
+    }
+
+    private void Update()
+    {
+        livesText.text = "Lives: " + levelHealth.health; //Zou de current health moeten laten zien.
     }
 }

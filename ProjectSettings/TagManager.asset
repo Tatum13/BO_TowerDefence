@@ -6,6 +6,8 @@ TagManager:
   tags:
   - MainBuilding
   - Enemy
+  - EndTile
+  - Spawn
   layers:
   - Default
   - TransparentFX

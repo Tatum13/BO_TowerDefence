@@ -7,9 +7,10 @@ public class BulletScript : MonoBehaviour
     public GameObject target;
     public float speed;
     public float damage = 10;
-  
+
     private void Update()
     {
+
         if (target)//Als die target(enemy) vind dan moet die erheen.
         {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);//Beweegt de bullet naar de enemy toe.    
@@ -29,6 +30,7 @@ public class BulletScript : MonoBehaviour
         }
     }
 
+    
 
 
 }

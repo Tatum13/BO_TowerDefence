@@ -111,8 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea1dbf723ece9741b225cf2a9080bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  mainBuildingHealth: {fileID: 0}
+  damage: 1
+  levelHealth: {fileID: 0}
+  livesText: {fileID: 3877732999579955099, guid: 1f15f5e82099b484cb04ad662505287e, type: 3}
 --- !u!114 &3725017725762620909
 MonoBehaviour:
   m_ObjectHideFlags: 0
